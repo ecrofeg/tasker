@@ -7,12 +7,12 @@ module.exports = {
 	
 	entry: [
 		'webpack-dev-server/client?http://127.0.0.1:8080/',
-		'webpack/hot/only-dev-server',
 		'./frontend/src/index.js'
 	],
 	
 	output: {
-		path: path.join(__dirname, 'frontend/public/dist'),
+		path: path.resolve(__dirname, 'frontend/public/dist'),
+		publicPath: '/dist/',
 		filename: 'bundle.js'
 	},
 	
