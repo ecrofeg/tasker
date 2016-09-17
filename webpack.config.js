@@ -1,5 +1,6 @@
-var webpack = require('webpack'),
-	path = require('path');
+const webpack = require('webpack'),
+	path = require('path'),
+	autoprefixer = require('autoprefixer');
 
 module.exports = {
 	devtool: 'inline-source-map',
@@ -25,10 +26,22 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.jsx?$/,
-				exclude: /node_module/,
+				exclude: /node_modules/,
 				loaders: ['babel?presets[]=react,presets[]=es2015']
-			}	
+			},
+			{
+				test: /\.(styl|css)$/,
+				loader: 'style!css?minimize&sourceMap!postcss!stylus?resolve url'
+			},
+			{
+				test: /\.(scss|sass)$/,
+				loader: 'style!css?minimize&sourceMap!sass'
+			}
 		]
+	},
+
+	postcss: function () {
+		return [autoprefixer];
 	},
 	
 	plugins: [
