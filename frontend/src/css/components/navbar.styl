@@ -1,0 +1,37 @@
+.tsk-nav
+	position fixed
+	left 0
+	right 0
+	height 50px
+	line-height @height
+	padding 0 $mainPadding
+	background-color $navBarColor
+	color #fff
+	box-shadow 0 0 4px #999;
+
+	a
+		&:hover, &:focus, &:active
+			color #333
+
+	&__logo
+		font-size 18px
+		&, &:hover, &:focus, &:active, &:visited
+			color #333
+			text-decoration none
+
+	ul &__links
+		display inline-block
+		margin 0 0 0 35px
+		padding 0
+
+	&__link
+		display inline
+		margin-right 15px
+
+		a
+			color #999
+			text-decoration none
+			text-transform uppercase
+
+		a &_active
+			color #333
