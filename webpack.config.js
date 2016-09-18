@@ -5,23 +5,23 @@ const webpack = require('webpack'),
 module.exports = {
 	devtool: 'inline-source-map',
 	watch: true,
-	
+
 	entry: [
 		'webpack-dev-server/client?http://127.0.0.1:8080/',
 		'./frontend/src/index.js'
 	],
-	
+
 	output: {
 		path: path.resolve(__dirname, 'frontend/public/dist'),
 		publicPath: '/dist/',
 		filename: 'bundle.js'
 	},
-	
+
 	resolve: {
 		modulesDirectories: ['node_modules', 'frontend/src'],
-		extentions: ['', '.js']
+		extentions: ['', '.js', '.jsx']
 	},
-	
+
 	module: {
 		loaders: [
 			{
@@ -36,6 +36,10 @@ module.exports = {
 			{
 				test: /\.(scss|sass)$/,
 				loader: 'style!css?minimize&sourceMap!sass'
+			},
+			{
+				test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+				loader: 'file-loader'
 			}
 		]
 	},
@@ -43,7 +47,7 @@ module.exports = {
 	postcss: function () {
 		return [autoprefixer];
 	},
-	
+
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin()
